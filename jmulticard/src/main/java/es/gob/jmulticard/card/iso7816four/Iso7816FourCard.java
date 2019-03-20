@@ -169,7 +169,7 @@ public abstract class Iso7816FourCard extends SmartCard {
 	                readedResponse = readBinary(msbOffset, lsbOffset, (byte) left);
 	            }
 	            else {
-	                readedResponse = readBinary(msbOffset, lsbOffset, (byte) MAX_READ_CHUNK);
+	                readedResponse = readBinary(msbOffset, lsbOffset, (byte) 0);
 	            }
             }
             catch(final Exception e) {
@@ -185,9 +185,9 @@ public abstract class Iso7816FourCard extends SmartCard {
                 throw new IOException("Error leyendo el binario (" + readedResponse.getStatusWord() + ")"); //$NON-NLS-1$ //$NON-NLS-2$
             }
 
-            out.write(readedResponse.getData());
-
-            off += MAX_READ_CHUNK;
+            final byte[] data = readedResponse.getData();
+            out.write(data);
+            off += data.length;
 
             // Si hemos llegado al final no seguimos leyendo
             if (eofReached) {

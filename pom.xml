@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>es.gob.afirma.jmulticard</groupId>
 	<artifactId>jmulticard-base</artifactId>
-	<version>1.5</version>
+	<version>1.6</version>
 	<packaging>pom</packaging>
 	
 	<name>jmulticard-base</name>
@@ -62,6 +62,8 @@
 		</dependency>
 	</dependencies>
 
+<profiles>
+
 		<!-- Construccion por defecto -->
 		<profile>
 			<id>basic</id>
@@ -101,9 +103,6 @@
 
 	    </profile>
 
-	
-	<profiles>
-	
 		<!-- Construccion por defecto -->
 		<profile>
 			<id>env-dev</id>
